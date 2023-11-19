@@ -5,6 +5,37 @@
 #         self.next = next
 class Solution:
     def isPalindrome(self, head: Optional[ListNode]) -> bool:
+        
+        fast = head
+        slow = head
+
+        #this way we will find middle of the list(slow) and end of the list(fast)
+        while fast and fast.next:
+            fast = fast.next.next
+            slow = slow.next
+
+        #reversing the second half of the linked list
+        prev = None
+        while slow:
+            tmp = slow.next
+            slow.next = prev
+            prev = slow
+            slow = tmp
+
+        left, right = head, prev
+        while right:
+            if left.val !=right.val:
+                return False
+            
+            #in ll u increment using .next 
+            left = left.next 
+            right = right.next
+        return True
+
+
+
+
+    def isPalindrome_usingArrayMethod(self, head: Optional[ListNode]) -> bool:
         array = []
 
         while head:
