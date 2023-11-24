@@ -13,8 +13,27 @@ class Solution:
             temp = temp.next
         return count 
 
+    #linkedlist method
+    def pairSum(Self, head: Optional[ListNode]) -> int:
+        slow, fast = head, head
 
-    def pairSum(self, head: Optional[ListNode]) -> int:
+        add = []
+
+        while fast and fast.next:
+            add.append(slow)
+            slow = slow.next
+            fast = fast.next.next
+
+        maximum = 0
+        while slow and add:
+            cur = add.pop()
+            maximum = max(maximum, cur.val + slow.val)
+            slow = slow.next
+
+        return maximum
+
+    #array method 
+    def pairSums(self, head: Optional[ListNode]) -> int:
 
         current = head
         n = self.getLen(current)
