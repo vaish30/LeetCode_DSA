@@ -2,12 +2,12 @@ class Solution:
     def containsDuplicate(self, nums: List[int]) -> bool:
 
         #using hash set - which contains no duplicates 
-        arr = set()
-        for i in nums:
-            if i in arr:
-                return True 
-            arr.add(i)
-        return False
+        # arr = set()
+        # for i in nums:
+        #     if i in arr:
+        #         return True 
+        #     arr.add(i)
+        # return False
         
         
         
@@ -20,6 +20,14 @@ class Solution:
         #     print(i, arr[i])
             
         # return False
+
+        #using sorting for less time complexity
+        nums.sort()
+        n = len(nums)
+        for i in range(1,n):
+            if nums[i] == nums[i-1]:
+                return True
+        return False
 
 
 
