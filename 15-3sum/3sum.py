@@ -56,7 +56,7 @@ class Solution:
                 else:
                     k-=1
 
-        return result
+        return list(result)
                     
 
 
