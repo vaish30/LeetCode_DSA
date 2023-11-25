@@ -38,7 +38,7 @@ class Solution:
         result = set()
         target = 0
 
-        new_nums = nums.sort()
+        nums.sort()
         # j=i+1
         # k=len(nums)-1 
 
