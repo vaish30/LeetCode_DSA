@@ -4,6 +4,8 @@ class Solution:
 
         output = ""
 
+
+        #to make sure it runs in the reverse order 
         for i in range(len(new_string)-1,0,-1):
             output += new_string[i] + " "
 
