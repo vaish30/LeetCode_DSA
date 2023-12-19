@@ -1,14 +1,22 @@
-class Solution(object):
-    def compress(self, chars):
-        left = i = 0
-        while i < len(chars):
-            char, length = chars[i], 1
-            while (i + 1) < len(chars) and char == chars[i + 1]:
-                length, i = length + 1, i + 1
-            chars[left] = char
-            if length > 1:
-                len_str = str(length)
-                chars[left + 1:left + 1 + len(len_str)] = len_str
-                left += len(len_str)
-            left, i = left + 1, i + 1
-        return left
+class Solution:
+    def compress(self, chars: List[str]) -> int:
+        stack=[]
+        s=""
+        for i in range(len(chars)):
+            if len(stack)==0 or stack[-1]==chars[i]:
+                stack.append(chars[i])
+            else:
+                s+=stack[-1]
+                if len(stack)!=1:
+                    s+=str(len(stack))
+                stack.clear()
+                stack.append(chars[i])
+        s+=stack[-1]
+        if len(stack)!=1:
+            s+=str(len(stack))
+        chars.clear()
+        for i in s:
+            chars.append((i))
+        return len(s)
+
+        
