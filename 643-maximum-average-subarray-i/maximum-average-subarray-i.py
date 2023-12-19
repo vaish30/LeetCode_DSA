@@ -1,19 +1,18 @@
 class Solution:
     def findMaxAverage(self, nums: List[int], k: int) -> float:
+        i = 0
+        n = len(nums)
+        max_avg = float("-inf")
+        cur_avg = sum(nums[:k])
+        max_avg = cur_avg / k
         
-        # Initialize currSum and maxSum to the sum of the initial k elements
-        currSum = maxSum = sum(nums[:k])
 
-        # Start the loop from the kth element 
-        # Iterate until you reach the end
-        for i in range(k, len(nums)):
+        while i + k + 1 <= n:
+            cur_avg -= nums[i]
+            cur_avg += nums[i+k]
 
-            # Subtract the left element of the window
-            # Add the right element of the window
-            currSum += nums[i] - nums[i - k]
-            
-            # Update the max
-            maxSum = max(maxSum, currSum)
+            if max_avg < cur_avg / k:
+                max_avg = cur_avg / k
 
-        # Since the problem requires average, we return the average
-        return maxSum / k
+            i += 1
+        return max_avg
