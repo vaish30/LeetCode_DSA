@@ -3,7 +3,9 @@ class Solution:
         if len(s) != len(t):
             return False
 
-        h_s, h_t = {}, {} #multiple assignment
+        return sorted(s) == sorted(t)
+
+        '''h_s, h_t = {}, {} #multiple assignment
 
         for i in range( len(s)):
             h_s[s[i]] = 1 + h_s.get(s[i],0)
@@ -16,7 +18,7 @@ class Solution:
             if h_s[c] != h_t.get(c,0):
                 return False
                 
-        return h_s == h_t
+        return h_s == h_t'''
 
 
 
