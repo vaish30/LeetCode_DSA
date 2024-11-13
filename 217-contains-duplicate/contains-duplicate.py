@@ -1,6 +1,6 @@
 class Solution:
 
-    def eff_containsDuplicate(self, nums: List[int]) -> bool:
+    def containsDuplicate(self, nums: List[int]) -> bool:
         hashset = set()
 
         for n in nums:
@@ -19,7 +19,7 @@ class Solution:
         return False
 
     
-    def containsDuplicate(self, nums: List[int]) -> bool:
+    def second_containsDuplicate(self, nums: List[int]) -> bool:
         new_nums = nums.sort()
 
         for i in range(0, len(nums)-1):
