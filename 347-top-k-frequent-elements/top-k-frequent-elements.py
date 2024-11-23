@@ -1,18 +1,34 @@
 class Solution:
     def topKFrequent(self, nums: List[int], k: int) -> List[int]:
+        count = {}
+        freq = [[] for i in range(len(nums) + 1)]
 
-        freq_list = dict()
+        for n in nums:
+            count[n] = 1 + count.get(n,0)
 
-        for i in nums:
-            if i in freq_list:
-                freq_list[i]+=1
-            else:
-                freq_list[i]=1
+        arr = []
+        for n,c in count.items():
+            arr.append([c, n])
+        arr.sort()
+        print(arr)
 
-        top_freq = sorted(freq_list.items(), key=lambda i: i[1], reverse=True)
-        sorted_dict = {key: value for key, value in top_freq}
+        res = []
+        while len(res) < k:
+            res.append(arr.pop()[1])
+        return res
 
-        return list(sorted_dict.keys())[:k]
+        # print(arr)
+
+
+'''
 
         
-        
+        for n, c in count.items():
+                freq[c].append(n)
+
+        res = []
+        for i in range(len(freq) -1, 0 , -1):
+            for j in  freq[i]:
+                res.append(j)
+                if len(res) == k:
+                    return res'''
