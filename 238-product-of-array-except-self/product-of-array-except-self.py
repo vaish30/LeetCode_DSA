@@ -5,8 +5,9 @@ class Solution:
         postfix = [0] * len(nums)
         leftmost, rightmost = 1, 1
 
+        size = len(nums)-1
         for i in range(len(nums)):
-            j = -i -1 
+            j = size-i
             prefix[i] = leftmost
             postfix[j] = rightmost
             leftmost *= nums[i]
